@@ -11,7 +11,7 @@
 let $cuadros = document.querySelectorAll(".cuadro");
 let color;
 let comparate = [];
-let $primerCuadro;
+
 let $segundoCuadro;
 let contador;
 preparateGame();
@@ -64,7 +64,7 @@ function userTurn(){
         }       
     });
 }
-
+let $primerCuadro;
 function firstMovement(e){
     comparate.push(e.target);
     $primerCuadro === comparate[0];
