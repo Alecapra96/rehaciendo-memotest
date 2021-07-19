@@ -1,0 +1,16 @@
+
+*{
+    box-sizing: border-box;
+}
+
+.row-1 ,.row-2,.row-3,.row-4{
+    display: flex;
+    justify-content: center;
+}
+.cuadro{
+    margin: 10px;
+    border: 2px solid black;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+}
