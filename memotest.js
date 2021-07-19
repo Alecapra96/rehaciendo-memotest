@@ -64,12 +64,13 @@ function userTurn(){
         }       
     });
 }
-function firstMovement(currentValue){
-    comparate.push(currentValue.target);
-    $primerCuadro == comparate[0]
-    $segundoCuadro == comparate[1]
-    show($primerCuadro);
 
+function firstMovement(e){
+    comparate.push(e.target);
+    $primerCuadro === comparate[0];
+    // $segundoCuadro == comparate[1];
+    console.log($primerCuadro )
+    // show($primerCuadro);
     game();
 }   
 function compare(){
@@ -80,6 +81,10 @@ function compare(){
 
     }
 }
+
 function show(cuadro){
-    
+    color = cuadro.className;
+    console.log(color)
+    color = color.replace("cuadro",'').trim();
+    return cuadro.style.backgroundColor=color;
 }
