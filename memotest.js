@@ -12,7 +12,7 @@ let $cuadros = document.querySelectorAll(".cuadro");
 let color;
 let comparate = [];
 let $segundoCuadro;
-let contador;
+let contador=0;
 let hiddenSquare=0;
 
 preparateGame();
@@ -111,16 +111,12 @@ function hide(cuadro){
 }
 function reset(){
     return comparate = [];
-};
-function clean(cuadro){
-    color = "white";
-    return cuadro.style.backgroundColor=color;
 }
 function removeSquare(cuadro){
     return cuadro.style.visibility="hidden";
 }
 function endGame(){
     if($cuadros.length === hiddenSquare){
-    console.log("FELICITACIONES");
+    alert("Felicitaciones! , TE LLEVO "+ contador+ " INTENTOS");
     };
 }
