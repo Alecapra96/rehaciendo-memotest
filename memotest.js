@@ -40,7 +40,6 @@ function preparateGame(){
     colorsArrayDisorder.forEach(function(currentValue,index){
         document.querySelector(`#cuadro-${index}`).classList.add(currentValue);
         document.querySelector(`#cuadro-${index}`).style.backgroundColor = "black";
-
     })
 }
 function blockinput() {
@@ -78,7 +77,31 @@ function compare(){
         contador++; 
     }else if ($primerCuadro.className === $segundoCuadro.className){
         contador++;
+<<<<<<< Updated upstream
 
+=======
+        show($segundoCuadro);
+        setTimeout(function(){ 
+            removerCuadro($primerCuadro);
+            removerCuadro($segundoCuadro);
+            reset();
+            game();
+        },600);           
+        // Espero 1 segundo y le pongo fondo trasparente a los cuadros descubridos 
+        //----------- TENGO QUE ELIMINARLOS!----------------
+    }else{
+        show($segundoCuadro);
+        setTimeout(function(){ 
+            hide($primerCuadro);
+            hide($segundoCuadro);
+            reset();
+            game();
+        },600);           
+        // Espero 1 s
+        // Espero 1 segundo y le pongo fondo negro a los cuadros descubridos 
+       
+        contador++;
+>>>>>>> Stashed changes
     }
 }
 
@@ -87,4 +110,8 @@ function show(cuadro){
     console.log(color)
     color = color.replace("cuadro",'').trim();
     return cuadro.style.backgroundColor=color;
+}
+function removerCuadro(cuadro){
+    padre = cuadro.parentNode;
+    return padre.removeChild(cuadro);
 }
