@@ -2,15 +2,32 @@
 *{
     box-sizing: border-box;
 }
-
+#tablero-superior{
+    justify-content: center;
+    height: 220px;
+   
+}
+#div-contador{
+    
+    text-align: center;
+}
+#div-titulo{
+    justify-content: center;
+    height: 150px;
+    text-align: center;
+    font-size: 120px;
+}
+#tablero{
+    justify-content: center;
+}
 .row-1 ,.row-2,.row-3,.row-4{
     display: flex;
     justify-content: center;
 }
 .cuadro{
     margin: 10px;
-    border: 2px solid black;
-    height: 70px;
-    width: 70px;
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
     text-align: center;
 }

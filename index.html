@@ -4,10 +4,20 @@
   <meta charset="utf-8">
   <title>HTML</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet" type="text/css">
+
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <div id="tablero">
+    <div id="tablero-superior">
+        <div id="div-titulo">
+            <p id="titulo">MEMOTEST</p>
+            </div>
+        <div id="div-contador">
+        <p id="contador">CONTADOR</p>
+        </div>
+    </div>
+    <div id="tablero">
       <div class="row-1">
             <div class="cuadro" id="cuadro-0"></div>
             <div class="cuadro" id="cuadro-1"></div>
@@ -34,6 +44,8 @@
       </div>
   </div>
   <script src="memotest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </body>
 </html>
 

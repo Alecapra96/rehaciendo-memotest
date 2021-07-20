@@ -7,7 +7,7 @@
 //-------si es diferente espera 2 segundos y da vuelta los colores.
 
 // hay que hacer que cuando de el segundo click no pueda hacer click por 2 seg mas.
-
+let $contador = document.getElementById("contador");
 let $cuadros = document.querySelectorAll(".cuadro");
 let color;
 let comparate = [];
@@ -35,7 +35,7 @@ function preparateGame(){
     let colorsArrayDisorder = desordenar(colorsArray);
     colorsArrayDisorder.forEach(function(currentValue,index){
         document.querySelector(`#cuadro-${index}`).classList.add(currentValue);
-        document.querySelector(`#cuadro-${index}`).style.backgroundColor = "black";
+        document.querySelector(`#cuadro-${index}`).style.backgroundColor = "#212F3C";
     })
 }
 function blockinput() {
@@ -67,9 +67,10 @@ function firstMovement(e){
 }   
 function compare(){
     if($primerCuadro === $segundoCuadro){ //si elige la misma figura.
-        contador++; 
+        contador++;
         setTimeout(function(){ 
             hide($primerCuadro)
+            $contador.innerText="CONTADOR : "+ contador; 
             reset();
             game();
         },400);          
@@ -80,6 +81,7 @@ function compare(){
         setTimeout(function(){ 
             removeSquare($primerCuadro);
             removeSquare($segundoCuadro);
+            $contador.innerText="CONTADOR : "+ contador; 
             hiddenSquare += 2;
             reset();
             game();
@@ -91,6 +93,7 @@ function compare(){
         setTimeout(function(){ 
             hide($primerCuadro);
             hide($segundoCuadro);
+            $contador.innerText="CONTADOR : "+ contador; 
             reset();
             game();
         },600);           
@@ -106,7 +109,7 @@ function show(cuadro){
     return cuadro.style.backgroundColor=color;
 }
 function hide(cuadro){
-    color = "black";
+    color = "#212F3C";
     return cuadro.style.backgroundColor=color;
 }
 function reset(){
@@ -117,6 +120,16 @@ function removeSquare(cuadro){
 }
 function endGame(){
     if($cuadros.length === hiddenSquare){
-    alert("Felicitaciones! , TE LLEVO "+ contador+ " INTENTOS");
+    // alert("Felicitaciones! , TE LLEVO "+ contador+ " INTENTOS");
+    Swal.fire({
+        icon: 'success',
+        title: "GANASTE , TE TOMO "+contador+" MOVIMIENTOS"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                return location.reload();
+            }else{
+                location.reload();   
+            } 
+        })
     };
 }
