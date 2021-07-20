@@ -11,7 +11,6 @@
 let $cuadros = document.querySelectorAll(".cuadro");
 let color;
 let comparate = [];
-
 let $segundoCuadro;
 let contador;
 preparateGame();
@@ -21,17 +20,16 @@ game();
 function game() {
     console.log(comparate.length)
         if (comparate.length === 2) {
-            console.log("entre")
-            blockinput()
-            compare()
+        console.log("entre")
+        blockinput()
+        compare()
         } else {
-            userTurn()
-        //}
-        //if (comparacion.length === 0) {
-        //    endGame()
-        //}
-    }
-
+        userTurn()
+        }
+        if (comparate.length === 0) {
+        // endGame()
+        console.log("termino")    
+        }
 }
 function preparateGame(){
     const colorsArray = ["red","red","blue","blue","yellow","yellow","grey","grey","green","green","orange","orange","pink","pink","purple","purple"]
@@ -67,24 +65,60 @@ function userTurn(){
 let $primerCuadro;
 function firstMovement(e){
     comparate.push(e.target);
-    $primerCuadro === comparate[0];
-    // $segundoCuadro == comparate[1];
-    console.log($primerCuadro )
-    // show($primerCuadro);
+    $primerCuadro = comparate[0];
+    $segundoCuadro = comparate[1];
+    show($primerCuadro);
     game();
 }   
 function compare(){
-    if($primerCuadro === $segundoCuadro){
+    if($primerCuadro === $segundoCuadro){ //si elige la misma figura.
         contador++; 
+        setTimeout(function(){ 
+            hide($primerCuadro)
+            reset();
+            game();
+        },400);          
+        //escondo el cuadro y le sumo al contador por huevon
     }else if ($primerCuadro.className === $segundoCuadro.className){
         contador++;
-
+        show($segundoCuadro);
+        setTimeout(function(){ 
+            clean($primerCuadro);
+            clean($segundoCuadro);
+            reset();
+            game();
+        },600);           
+        // Espero 1 segundo y le pongo fondo trasparente a los cuadros descubridos 
+        //----------- TENGO QUE ELIMINARLOS!----------------
+    }else{
+        show($segundoCuadro);
+        setTimeout(function(){ 
+            hide($primerCuadro);
+            hide($segundoCuadro);
+            reset();
+            game();
+        },600);           
+        // Espero 1 s
+        // Espero 1 segundo y le pongo fondo negro a los cuadros descubridos 
+       
+        contador++;
     }
 }
 
 function show(cuadro){
     color = cuadro.className;
-    console.log(color)
     color = color.replace("cuadro",'').trim();
+    console.log(color)
+    return cuadro.style.backgroundColor=color;
+}
+function hide(cuadro){
+    color = "black";
+    return cuadro.style.backgroundColor=color;
+}
+function reset(){
+    return comparate = [];
+};
+function clean(cuadro){
+    color = "white";
     return cuadro.style.backgroundColor=color;
 }
