@@ -13,28 +13,26 @@ let color;
 let comparate = [];
 let $segundoCuadro;
 let contador;
+let hiddenSquare=0;
+
 preparateGame();
 game();
 
 
 function game() {
-    console.log(comparate.length)
         if (comparate.length === 2) {
-        console.log("entre")
         blockinput()
         compare()
         } else {
         userTurn()
         }
         if (comparate.length === 0) {
-        // endGame()
-        console.log("termino")    
+        endGame()
         }
 }
 function preparateGame(){
     const colorsArray = ["red","red","blue","blue","yellow","yellow","grey","grey","green","green","orange","orange","pink","pink","purple","purple"]
     let colorsArrayDisorder = desordenar(colorsArray);
-    console.log(colorsArrayDisorder);
     colorsArrayDisorder.forEach(function(currentValue,index){
         document.querySelector(`#cuadro-${index}`).classList.add(currentValue);
         document.querySelector(`#cuadro-${index}`).style.backgroundColor = "black";
@@ -48,12 +46,10 @@ function blockinput() {
         }
     })
 }
-
 function desordenar(array){ // esta función me desordena un array
     array = array.sort(function() {return Math.random() - 0.5});
     return array;  
 }
-
 function userTurn(){
     $cuadros.forEach(function(currentValue){
         currentValue.onclick=function(currentValue){
@@ -84,6 +80,7 @@ function compare(){
         setTimeout(function(){ 
             removeSquare($primerCuadro);
             removeSquare($segundoCuadro);
+            hiddenSquare += 2;
             reset();
             game();
         },600);           
@@ -103,11 +100,9 @@ function compare(){
         contador++;
     }
 }
-
 function show(cuadro){
     color = cuadro.className;
     color = color.replace("cuadro",'').trim();
-    console.log(color)
     return cuadro.style.backgroundColor=color;
 }
 function hide(cuadro){
@@ -123,5 +118,9 @@ function clean(cuadro){
 }
 function removeSquare(cuadro){
     return cuadro.style.visibility="hidden";
-
+}
+function endGame(){
+    if($cuadros.length === hiddenSquare){
+    console.log("FELICITACIONES");
+    };
 }
