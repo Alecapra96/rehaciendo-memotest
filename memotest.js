@@ -77,9 +77,6 @@ function compare(){
         contador++; 
     }else if ($primerCuadro.className === $segundoCuadro.className){
         contador++;
-<<<<<<< Updated upstream
-
-=======
         show($segundoCuadro);
         setTimeout(function(){ 
             removerCuadro($primerCuadro);
@@ -101,7 +98,6 @@ function compare(){
         // Espero 1 segundo y le pongo fondo negro a los cuadros descubridos 
        
         contador++;
->>>>>>> Stashed changes
     }
 }
 
