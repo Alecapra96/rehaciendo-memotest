@@ -82,8 +82,8 @@ function compare(){
         contador++;
         show($segundoCuadro);
         setTimeout(function(){ 
-            clean($primerCuadro);
-            clean($segundoCuadro);
+            removeSquare($primerCuadro);
+            removeSquare($segundoCuadro);
             reset();
             game();
         },600);           
@@ -120,4 +120,8 @@ function reset(){
 function clean(cuadro){
     color = "white";
     return cuadro.style.backgroundColor=color;
+}
+function removeSquare(cuadro){
+    return cuadro.style.visibility="hidden";
+
 }
